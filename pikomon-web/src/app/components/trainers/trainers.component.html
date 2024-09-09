@@ -1,0 +1,75 @@
+<div class="flex h-screen">
+  <!-- Barra Lateral -->
+  <div class="w-1/4 bg-dracula-current-line p-4 h-full overflow-y-auto">
+    <h2 class="text-xl font-bold text-dracula-text mb-4">Treinadores</h2>
+    <button
+      (click)="toggleForm()"
+      class="w-full py-2 px-4 mb-4 bg-dracula-cyan text-dracula-bg font-semibold rounded-md shadow-sm hover:bg-dracula-cyan focus:outline-none focus:ring-2 focus:ring-dracula-cyan focus:ring-offset-2"
+    >
+      + Criar Novo Treinador
+    </button>
+    <div *ngFor="let trainer of trainers" class="mb-4">
+      <div class="bg-dracula-bg p-4 rounded-md shadow-sm">
+        <h3 class="text-lg font-semibold text-dracula-text">{{ trainer.name }}</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- Área Principal -->
+  <div class="flex-1 p-4 bg-dracula-bg h-full">
+    <div *ngIf="!showForm">
+      <p class="text-dracula-text">Selecione um treinador para editar ou crie um novo treinador.</p>
+    </div>
+
+    <div *ngIf="showForm" class="bg-dracula-current-line p-8 rounded-lg shadow-lg h-full flex flex-col justify-center">
+      <h2 class="text-2xl font-bold mb-6 text-center text-dracula-text">Criar Treinador</h2>
+      <form (ngSubmit)="onSubmit()" #trainerForm="ngForm" class="space-y-4">
+        <div class="mb-4">
+          <label for="name" class="block text-sm font-medium text-dracula-text">Nome</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            [(ngModel)]="newTrainer.name"
+            required
+            class="mt-1 block w-full px-3 py-2 border border-dracula-current-line bg-dracula-bg text-dracula-text rounded-md shadow-sm focus:outline-none focus:ring-dracula-cyan focus:border-dracula-cyan sm:text-sm"
+            placeholder="Digite o nome do treinador"
+          />
+        </div>
+        <div class="flex flex-row">
+          <div class="mb-4">
+            <label for="gender" class="block text-sm font-medium text-dracula-text">Gênero</label>
+            <select
+              id="gender"
+              name="gender"
+              [(ngModel)]="newTrainer.gender"
+              required
+              class="mt-1 block w-full px-3 py-2 border border-dracula-current-line bg-dracula-bg text-dracula-text rounded-md shadow-sm focus:outline-none focus:ring-dracula-cyan focus:border-dracula-cyan sm:text-sm"
+            >
+              <option *ngFor="let gender of genders" [value]="gender">{{ gender }}</option>
+            </select>
+          </div>
+          <div class="mb-6">
+            <label for="pokemon" class="block text-sm font-medium text-dracula-text">Pokémon</label>
+            <select
+              id="pokemon"
+              name="pokemon"
+              [(ngModel)]="newTrainer.pokemon"
+              required
+              class="mt-1 block w-full px-3 py-2 border border-dracula-current-line bg-dracula-bg text-dracula-text rounded-md shadow-sm focus:outline-none focus:ring-dracula-cyan focus:border-dracula-cyan sm:text-sm"
+            >
+              <option *ngFor="let pokemon of pokemons" [value]="pokemon">{{ pokemon }}</option>
+            </select>
+          </div>
+
+        </div>
+        <button
+          type="submit"
+          class="w-full py-2 px-4 bg-dracula-cyan text-dracula-bg font-semibold rounded-md shadow-sm hover:bg-dracula-cyan focus:outline-none focus:ring-2 focus:ring-dracula-cyan focus:ring-offset-2"
+        >
+          Salvar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

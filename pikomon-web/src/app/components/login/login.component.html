@@ -1,0 +1,30 @@
+<div class="flex items-center justify-center min-h-screen bg-dracula-bg">
+    <div class="bg-dracula-current-line p-8 rounded-lg shadow-lg max-w-sm w-full">
+        <h2 class="text-2xl font-bold mb-6 text-center text-dracula-text">Pikomon</h2>
+        <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+            <div class="mb-4">
+                <label for="username" class="block text-sm font-medium text-dracula-text">Usuário</label>
+                <input type="text" id="username" name="username" ngModel required
+                    class="mt-1 block w-full px-3 py-2 border border-dracula-current-line bg-dracula-bg text-dracula-text rounded-md shadow-sm focus:outline-none focus:ring-dracula-cyan focus:border-dracula-cyan sm:text-sm"
+                    placeholder="Digite seu nome de usuário" />
+            </div>
+            <div class="mb-6">
+                <label for="password" class="block text-sm font-medium text-dracula-text">Senha</label>
+                <input type="password" id="password" name="password" ngModel required minlength="6"
+                    class="mt-1 block w-full px-3 py-2 border border-dracula-current-line bg-dracula-bg text-dracula-text rounded-md shadow-sm focus:outline-none focus:ring-dracula-cyan focus:border-dracula-cyan sm:text-sm"
+                    placeholder="Digite sua senha" />
+            </div>
+            <div class="flex gap-4">
+                <button type="submit"
+                    class="w-full py-2 px-4 bg-dracula-cyan text-dracula-bg font-semibold rounded-md shadow-sm hover:bg-dracula-cyan focus:outline-none focus:ring-2 focus:ring-dracula-cyan focus:ring-offset-2">
+                    Login
+                </button>
+                
+                <a routerLink="/signin"
+                    class="w-full py-2 px-4 bg-dracula-purple text-dracula-bg font-semibold rounded-md shadow-sm hover:bg-dracula-purple focus:outline-none focus:ring-2 focus:ring-dracula-purple focus:ring-offset-2 flex items-center justify-center">
+                    Sign In
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
